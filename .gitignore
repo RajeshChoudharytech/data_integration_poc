@@ -1,0 +1,37 @@
+# Python specific
+*.egg
+*.egg-info/
+*.eggs
+*.pyd
+*.whl
+*.manifest
+
+# Cache
+__pycache__/
+.pytest_cache/
+*.log
+.cache
+
+
+# Virtual environment
+.env
+.venv
+env/
+venv/
+
+# SQLAlchemy
+migrations/versions/*
+
+# Alembic
+# ignore the sqlite database used by alembic for versioning
+alembic/versions/*
+alembic/autogenerate/
+
+# FastAPI specific
+/data_integration_poc/.alembic/
+
+# Logs and databases
+*.db
+*.sqlite3
+
+
