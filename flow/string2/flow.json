@@ -1,0 +1,53 @@
+[
+  {
+    "type": "EMRClusterSensor",
+    "node_name": "emr-cluster-sensor-1",
+     "emr_cluster_id": "string",
+    "dependent_on": [],
+    "aws_connection_id": "aws-conn-123",
+    "target_states": ["RUNNING", "WAITING"],
+    "failed_states": ["TERMINATED", "FAILED"],
+    "timeout": 300,
+    "poke_interval": 60
+  },
+  {
+    "type": "EMRPipelineSensor",
+    "node_name": "emr-pipeline-sensor-1",
+    "dependent_on": ["emr-cluster-sensor-1"],
+    "step_id": "s-1234567890",
+    "emr_fabric": "fabric-1",
+    "aws_connection_id": "aws-conn-123",
+    "timeout": 400
+  },
+  {
+    "type": "HTTPSensor",
+    "node_name": "http-sensor-1",
+    "dependent_on": ["emr-pipeline-sensor-1"],
+    "endpoint": "https://api.example.com/data",
+    "connection_name": "http-conn-123",
+    "timeout": 200,
+    "poke_interval": 30,
+    "request_params": "{\"param1\":\"value1\"}",
+    "request_headers": "{\"Authorization\":\"Bearer token\"}"
+  },
+  {
+    "type": "S3Sensor",
+    "node_name": "s3-sensor-1",
+    "dependent_on": ["http-sensor-1"],
+    "connection_name": "s3-conn-123",
+    "bucket_name": "my-bucket",
+    "timeout": 180,
+    "poke_interval": 20,
+    "wildcard_match": false
+  },
+  {
+    "type": "SFTPSensor",
+    "node_name": "sftp-sensor-1",
+    "dependent_on": ["s3-sensor-1"],
+    "sftp_connection": "sftp-conn-123",
+    "sftp_path": "/home/user/data/file.txt",
+    "timeout": 150,
+    "poke_interval": 10,
+    "verify_ssl": true
+  }
+]
