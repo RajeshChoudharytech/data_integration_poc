@@ -1,0 +1,1 @@
+{"schedule_interval": "@hourly", "tasks": [{"bash_command": "echo start"}, {"bash_command": "echo process"}, {"bash_command": "echo end"}], "dependencies": {"start": ["process"], "process": ["end"]}}
