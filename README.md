@@ -15,6 +15,7 @@ Create a Proof of Concept (POC) for a data integration API solution similar to A
 - Requests
 - Motor (Async MongoDB driver)
 - SQLModel
+- Test 
 
 ## Setup
 
