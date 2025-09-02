@@ -1,0 +1,1 @@
+{"user": {"output_file": "output.csv"}, "engine_configuration": {"file_path_prefix": "examples/pyspark"}}
